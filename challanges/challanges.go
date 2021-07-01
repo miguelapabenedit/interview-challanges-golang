@@ -7,7 +7,7 @@ import (
 
 // AbsoluteDifferenceBetweenDiagonals calculates the absolute difference between two diagonals of a square matrix.
 // It returns int as the absolute difference
-func AbsoluteDifferenceBetweenDiagonals(square [2][2]int) (int, error) {
+func AbsoluteDifferenceBetweenDiagonals(square [][]int) (int, error) {
 	if len(square) == 0 {
 		return 0, errors.New("the square cant be of lenght 0")
 	}

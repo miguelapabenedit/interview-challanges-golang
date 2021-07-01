@@ -28,28 +28,30 @@ func TestAbsoluteDifferenceBetweenDiagonals_InvalidSquareLenght_ReturnsError(t *
 
 func TestAbsoluteDifferenceBetweenDiagonals_ValidSquare_ReturnsAbsoluteInt(t *testing.T) {
 	type SquareResult struct {
-		matrix   [2][2]int
+		matrix   [][]int
 		expected int
 	}
 
 	testCases := []SquareResult{
 		{
-			matrix: [2][2]int{
+			matrix: [][]int{
 				{1, 2},
 				{1, 2},
 			},
-			expected: 0,
+			expected: 1,
 		}, {
-			matrix: [2][2]int{
-				{1, 2},
-				{1, 2},
+			matrix: [][]int{
+				{1, 3, 3, 3},
+				{1, 21, 23, 2},
+				{1, 21, 1, 2},
+				{1, 21, 1, 2},
 			},
-			expected: 0,
+			expected: 16,
 		},
 	}
 
 	for _, val := range testCases {
 		r, _ := AbsoluteDifferenceBetweenDiagonals(val.matrix)
-		assert.True(t, r == val.expected)
+		assert.Equal(t, val.expected, r)
 	}
 }
