@@ -55,3 +55,30 @@ func TestAbsoluteDifferenceBetweenDiagonals_ValidSquare_ReturnsAbsoluteInt(t *te
 		assert.Equal(t, val.expected, r)
 	}
 }
+
+func TestIsPalindrome(t *testing.T) {
+	type TestCases struct {
+		s        string
+		expected bool
+	}
+
+	testCases := []TestCases{
+		{
+			"menem",
+			true,
+		},
+		{
+			"",
+			true,
+		},
+		{
+			"pamela",
+			false,
+		},
+	}
+
+	for _, v := range testCases {
+		r := IsPalindrome(v.s)
+		assert.Equal(t, v.expected, r)
+	}
+}
