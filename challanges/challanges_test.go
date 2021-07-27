@@ -82,3 +82,88 @@ func TestIsPalindrome(t *testing.T) {
 		assert.Equal(t, v.expected, r)
 	}
 }
+
+func TestCalculateBinaryGap(t *testing.T) {
+	type TestCases struct {
+		s        int
+		expected int
+	}
+
+	testCases := []TestCases{
+		{
+			512487,
+			3,
+		},
+		{
+			203,
+			2,
+		},
+		{
+			21,
+			1,
+		},
+	}
+
+	for _, v := range testCases {
+		r := CalculateBinaryGap(v.s)
+		assert.Equal(t, v.expected, r)
+	}
+}
+
+func TestRotateRightArray(t *testing.T) {
+	type TestCases struct {
+		s        []int
+		n        int
+		expected []int
+	}
+
+	testCases := []TestCases{
+		{
+			[]int{1, 2, 3, 4, 5, 6},
+			6,
+			[]int{1, 2, 3, 4, 5, 6},
+		},
+		{
+			[]int{1, 2, 3, 4, 5, 6},
+			3,
+			[]int{4, 5, 6, 1, 2, 3},
+		},
+		{
+			[]int{},
+			4,
+			[]int{},
+		},
+	}
+
+	for _, v := range testCases {
+		r := RotateRightArray(v.s, v.n)
+		assert.Equal(t, v.expected, r)
+	}
+}
+
+func TestFindFirstOddOcurrenceInArray(t *testing.T) {
+	type TestCases struct {
+		s        []int
+		expected int
+	}
+
+	testCases := []TestCases{
+		{
+			[]int{1, 1, 3, 3, 5, 5, 4},
+			4,
+		},
+		{
+			[]int{1, 1, 3, 3, 5, 5, 4, 4, 9},
+			9,
+		},
+		{
+			[]int{4},
+			4,
+		},
+	}
+
+	for _, v := range testCases {
+		r := FindFirstOddOcurrenceInArray(v.s)
+		assert.Equal(t, v.expected, r)
+	}
+}
