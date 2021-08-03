@@ -6,6 +6,45 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestTimeConvertion(t *testing.T) {
+	type TestCase struct {
+		d string
+		e string
+	}
+
+	tc := []TestCase{
+		{"11:00:00AM", "11:00:00"},
+		{"01:00:00AM", "01:00:00"},
+		{"02:00:00AM", "02:00:00"},
+		{"03:00:00AM", "03:00:00"},
+		{"04:00:00AM", "04:00:00"},
+		{"05:00:00AM", "05:00:00"},
+		{"06:00:00AM", "06:00:00"},
+		{"07:00:00AM", "07:00:00"},
+		{"08:00:00AM", "08:00:00"},
+		{"09:00:00AM", "09:00:00"},
+		{"10:00:00AM", "10:00:00"},
+		{"12:00:00AM", "00:00:00"},
+		{"01:00:00PM", "13:00:00"},
+		{"02:00:00PM", "14:00:00"},
+		{"03:00:00PM", "15:00:00"},
+		{"04:00:00PM", "16:00:00"},
+		{"05:00:00PM", "17:00:00"},
+		{"06:00:00PM", "18:00:00"},
+		{"07:00:00PM", "19:00:00"},
+		{"08:00:00PM", "20:00:00"},
+		{"09:00:00PM", "21:00:00"},
+		{"10:00:00PM", "22:00:00"},
+		{"11:00:00PM", "23:00:00"},
+		{"12:00:00PM", "12:00:00"},
+	}
+
+	for _, val := range tc {
+		r := TimeConversion(val.d)
+		assert.Equal(t, val.e, r)
+	}
+}
+
 func TestAbsoluteDifferenceBetweenDiagonals_EmptySquare_ReturnsError(t *testing.T) {
 	var square [][]int
 	var expected = "the square cant be of lenght 0"

@@ -8,6 +8,75 @@ import (
 	"strings"
 )
 
+//https://www.hackerrank.com/challenges/apple-and-orange/problem
+func CountApplesAndOranges(s int32, t int32, a int32, b int32, apples []int32, oranges []int32) {
+	orangeCount, appleCount := 0, 0
+
+	for i := 0; i < len(apples); i++ {
+		al := a + apples[i]
+		if al >= s && al <= t {
+			appleCount++
+		}
+	}
+
+	for i := 0; i < len(oranges); i++ {
+		or := b + oranges[i]
+		if or <= t && or >= s {
+			orangeCount++
+		}
+	}
+
+	fmt.Println(appleCount)
+	fmt.Println(orangeCount)
+}
+
+func GradientStudent(grades []int32) []int32 {
+	for i := 0; i < len(grades); i++ {
+		if grades[i] > 37 {
+			r := (((grades[i] / 5) + 1) * 5)
+			if (r - grades[i]) < 3 {
+				grades[i] = r
+			}
+		}
+	}
+	return grades
+}
+
+func TimeConversion(date string) string {
+	date, zone := date[:len(date)-2], date[len(date)-2:]
+	h, _ := strconv.Atoi(date[:2])
+	finalH := date[:2]
+
+	if strings.ToUpper(zone) == "PM" {
+		if h != 12 {
+			finalH = strconv.Itoa(h + 12)
+		}
+	} else if h == 12 {
+		finalH = "00"
+	}
+
+	return fmt.Sprintf("%v%v", finalH, date[2:])
+}
+
+func BirthDayCakeCandles(arr []int) {
+	var min int64
+	var max int64
+	var sum int64
+
+	for i := 0; i < len(arr); i++ {
+		sum = sum + int64(arr[i])
+
+		if int64(arr[i]) < min || min == 0 {
+			min = int64(arr[i])
+		}
+		if int64(arr[i]) > max {
+			max = int64(arr[i])
+		}
+	}
+
+	fmt.Printf("%v %v", sum-max, sum-min)
+}
+
 func Staircase(n int32) {
 	for i := 1; i <= int(n); i++ {
 		fmt.Print(strings.Repeat(" ", int(n)-i), strings.Repeat("#", i), "\n")
