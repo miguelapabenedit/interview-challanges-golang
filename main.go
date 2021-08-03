@@ -1,31 +1,31 @@
 package main
 
-import (
-	"fmt"
-
-	digitalengine "github.com/miguelapabenedit/interview-challanges-golang/digital-engine"
-)
-
 func main() {
-	digitalengine.Problem1(1001)
+	kangaroo(0, 3, 4, 2)
 }
-func Solution(arr []int32) {
-	var min int64
-	var max int64
-	var sum int64
 
-	for i := 0; i < len(arr); i++ {
-		sum = sum + int64(arr[i])
+func kangaroo(x1 int32, v1 int32, x2 int32, v2 int32) string {
+	// Write your code here
+	//canguro 2 siempre salta mas que el uno
+	// si el canguro 1 es pasado por el canguro 2 ya nunca va a poder ponrese al día
+	isBehind := true
+	theyCross := false
+	count := 1
+	result := "NO"
 
-		if int64(arr[i]) < min || min == 0 {
-			min = int64(arr[i])
-		}
-		if int64(arr[i]) > max {
-			max = int64(arr[i])
-		}
+	for isBehind && !theyCross {
+		isBehind = x2 > x1 && v1 < v2
+		theyCross = x2 == x1
+		x2 += v2
+		x1 += v1
+		count++
 	}
 
-	fmt.Printf("%v %v", sum-max, sum-min)
+	if theyCross {
+		result = "YES"
+	}
+
+	return result
 }
 
 // type Passager struct {
